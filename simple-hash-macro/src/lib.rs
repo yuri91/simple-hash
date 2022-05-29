@@ -34,7 +34,7 @@ pub fn hashable_derive(input: TokenStream) -> TokenStream {
     }).collect();
     let ret = quote! {
        impl #impl_generics simple_hash::Hashable for #name #ty_generics #where_clause {
-           fn update<H: Hasher>(&self, h: &mut H) {
+           fn update<H: simple_hash::Hasher>(&self, h: &mut H) {
                #(#fields_code)*
            }
        }
